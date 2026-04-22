@@ -1,0 +1,19 @@
+/* ═══════════════════════════════════════════
+   home.css – Főoldal stílusok
+   ═══════════════════════════════════════════ */
+ 
+/* ── HERO ── */
+.hero {
+    min-height: calc(100vh - var(--nav-h));
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+}
+
+.hero-bg {
+    position: absolute; inset: 0;
+    background: url('../images/back.jpg');
+}
+
+.hero-overlay {
+    
+}
