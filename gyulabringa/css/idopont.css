@@ -1,0 +1,87 @@
+/* idopont.css */
+.booking-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: start; }
+
+/* Lépések */
+.steps { display: flex; align-items: center; gap: 0; margin-bottom: 2.5rem; }
+.step { display: flex; flex-direction: column; align-items: center; gap: .3rem; }
+.step-n {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--gray); color: var(--ink-dim);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: .9rem; transition: all .3s;
+}
+.step-l { font-size: .72rem; font-weight: 700; color: var(--ink-dim); text-align: center; }
+.step.active .step-n { background: var(--shimano); color: #fff; }
+.step.active .step-l { color: var(--shimano); }
+.step.done .step-n   { background: var(--green); color: #fff; }
+.step-line { flex: 1; height: 2px; background: var(--gray); margin: 0 .5rem; margin-bottom: 1.4rem; transition: background .3s; }
+
+/* Form */
+.booking-step { animation: fadeUp .3s ease; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: .85rem; }
+.form-label { font-size: .72rem; font-weight: 700; color: var(--ink-dim); text-transform: uppercase; letter-spacing: .08em; }
+.form-input {
+  background: var(--off); border: 1.5px solid var(--gray);
+  border-radius: var(--r); padding: .7rem 1rem;
+  font-family: var(--font-body); font-size: .9rem; color: var(--ink);
+  transition: all var(--t); width: 100%;
+}
+.form-input:focus { outline: none; border-color: var(--shimano); box-shadow: 0 0 0 3px rgba(0,154,217,.12); }
+textarea.form-input { resize: vertical; }
+select.form-input { appearance: none; cursor: pointer; }
+
+/* Kerékpár típus */
+.bike-types { display: flex; flex-wrap: wrap; gap: .5rem; }
+.bike-type-opt input { display: none; }
+.bike-type-opt span {
+  display: inline-flex; align-items: center; gap: .35rem;
+  padding: .45rem .9rem; border-radius: 50px;
+  border: 1.5px solid var(--gray); background: var(--off);
+  font-size: .82rem; font-weight: 600; color: var(--ink-mid);
+  cursor: pointer; transition: all var(--t);
+}
+.bike-type-opt input:checked + span { background: var(--shimano); border-color: var(--shimano); color: #fff; }
+.bike-type-opt span:hover { border-color: var(--shimano); color: var(--shimano); }
+
+/* Időpont slotok */
+.time-slots { display: grid; grid-template-columns: repeat(4,1fr); gap: .5rem; }
+.slot {
+  padding: .6rem; border-radius: var(--r); border: 1.5px solid var(--gray);
+  background: var(--off); font-size: .88rem; font-weight: 700;
+  color: var(--ink-mid); text-align: center; cursor: pointer; transition: all var(--t);
+}
+.slot:hover  { border-color: var(--shimano); color: var(--shimano); }
+.slot.active { background: var(--shimano); border-color: var(--shimano); color: #fff; }
+
+/* Visszaigazolás */
+.booking-success {
+  display: none; text-align: center; padding: 3rem 1.5rem;
+  background: var(--off); border-radius: var(--r2); border: 1px solid var(--gray);
+}
+.booking-success-ico { font-size: 3.5rem; margin-bottom: 1rem; }
+.booking-success h3  { font-family: var(--font-display); font-size: 1.5rem; font-weight: 900; text-transform: uppercase; color: var(--ink); margin-bottom: .5rem; }
+.booking-success p   { color: var(--ink-dim); }
+
+/* Info panel */
+.booking-info { display: flex; flex-direction: column; gap: .85rem; }
+.info-card {
+  background: var(--off); border: 1px solid var(--gray);
+  border-radius: var(--r2); padding: 1.1rem 1.25rem;
+}
+.info-card-blue { background: var(--shimano-p); border-color: rgba(0,154,217,.3); }
+.info-card-ico   { font-size: 1.4rem; margin-bottom: .4rem; }
+.info-card-title { font-size: .72rem; font-weight: 700; text-transform: uppercase; color: var(--ink-dim); letter-spacing: .08em; margin-bottom: .3rem; }
+.info-card-val   { font-size: .88rem; color: var(--ink); line-height: 1.65; }
+.info-card-val a { color: var(--shimano); }
+
+@media (max-width: 900px) {
+  .booking-grid { grid-template-columns: 1fr; }
+  .form-row-2   { grid-template-columns: 1fr; }
+  .time-slots   { grid-template-columns: repeat(4,1fr); }
+}
+@media (max-width: 480px) {
+  .time-slots { grid-template-columns: repeat(3,1fr); }
+}

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Időpontfoglalás – GyulaBringa</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/idopont.css">
+</head>
+<body data-page="idopont">
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <div class="nav-logo-imgs"><img src="../images/logo.png" alt=""><img src="../images/ssc_logo.png" alt=""></div>
+        <div class="nav-logo-divider"></div>
+        <div class="nav-logo-text"><h1>GyulaBringa</h1><span>Shimano Service Center</span></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html" data-page="fooldal">Főoldal</a></li>
+        <li><a href="rolunk.html"   data-page="rolunk">Rólunk</a></li>
+        <li><a href="services.html" data-page="services">Szolgáltatások</a></li>
+        <li><a href="gallery.html"  data-page="gallery">Galéria</a></li>
+        <li><a href="contact.html"  data-page="contact" class="nav-cta">Kapcsolat</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="../index.html">🏠 Főoldal</a><a href="rolunk.html">👥 Rólunk</a>
+    <a href="services.html">🔧 Szolgáltatások</a><a href="gallery.html">📷 Galéria</a>
+    <a href="idopont.html">📅 Időpontfoglalás</a><a href="contact.html">✉️ Kapcsolat</a>
+  </div>
+
+  <div class="page">
+    <div class="page-hero">
+      <div class="page-hero-inner">
+        <div class="section-label">Időpontfoglalás</div>
+        <h1>Foglalj időpontot<br>online!</h1>
+        <p>Gyorsan, egyszerűen — a kerékpárod mielőbb megkapja a szükséges figyelmet.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="booking-grid">
+
+          <!-- FOGLALÓ ŰR -->
+          <div class="booking-form-wrap fade-in">
+            <h2 class="section-title" style="margin-bottom:.5rem;">Foglaló adatok</h2>
+            <p style="color:var(--ink-dim);margin-bottom:2rem;">Töltsd ki az alábbi adatokat és mi visszaigazoljuk az időpontot.</p>
+
+            <!-- Lépések -->
+            <div class="steps">
+              <div class="step active" id="step-1-ind">
+                <div class="step-n">1</div><div class="step-l">Szolgáltatás</div>
+              </div>
+              <div class="step-line"></div>
+              <div class="step" id="step-2-ind">
+                <div class="step-n">2</div><div class="step-l">Időpont</div>
+              </div>
+              <div class="step-line"></div>
+              <div class="step" id="step-3-ind">
+                <div class="step-n">3</div><div class="step-l">Adatok</div>
+              </div>
+            </div>
+
+            <form id="booking-form">
+
+              <!-- 1. lépés -->
+              <div class="booking-step" id="step-1">
+                <div class="form-group">
+                  <label class="form-label">Milyen szervízt kérsz? *</label>
+                  <select class="form-input" id="b-szolg" required>
+                    <option value="">— Válassz —</option>
+                    <option>Általános karbantartás</option>
+                    <option>Shimano váltórendszer beállítás</option>
+                    <option>Fékrendszer szerviz</option>
+                    <option>Hidraulikus fék légtelenítés</option>
+                    <option>Kerék centírozás</option>
+                    <option>Defekt javítás</option>
+                    <option>Bosch E-bike diagnosztika</option>
+                    <option>Bosch szoftverfrissítés</option>
+                    <option>Teljes generálszerviz</option>
+                    <option>Egyéb (leírás a megjegyzésben)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Kerékpár típusa</label>
+                  <div class="bike-types">
+                    <label class="bike-type-opt">
+                      <input type="radio" name="bike-type" value="Városi">
+                      <span>🚲 Városi</span>
+                    </label>
+                    <label class="bike-type-opt">
+                      <input type="radio" name="bike-type" value="MTB">
+                      <span>🏔️ MTB</span>
+                    </label>
+                    <label class="bike-type-opt">
+                      <input type="radio" name="bike-type" value="Országúti">
+                      <span>🚴 Országúti</span>
+                    </label>
+                    <label class="bike-type-opt">
+                      <input type="radio" name="bike-type" value="E-bike">
+                      <span>⚡ E-bike</span>
+                    </label>
+                    <label class="bike-type-opt">
+                      <input type="radio" name="bike-type" value="Egyéb">
+                      <span>🔧 Egyéb</span>
+                    </label>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-primary" style="width:100%;margin-top:.5rem;" onclick="goStep(2)">Tovább →</button>
+              </div>
+
+              <!-- 2. lépés -->
+              <div class="booking-step" id="step-2" style="display:none;">
+                <div class="form-group">
+                  <label class="form-label">Kívánt dátum *</label>
+                  <input type="date" class="form-input" id="b-datum" required min="">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Időpont *</label>
+                  <div class="time-slots" id="time-slots">
+                    <div class="slot" data-time="08:00">08:00</div>
+                    <div class="slot" data-time="09:00">09:00</div>
+                    <div class="slot" data-time="10:00">10:00</div>
+                    <div class="slot" data-time="11:00">11:00</div>
+                    <div class="slot" data-time="13:00">13:00</div>
+                    <div class="slot" data-time="14:00">14:00</div>
+                    <div class="slot" data-time="15:00">15:00</div>
+                    <div class="slot" data-time="16:00">16:00</div>
+                  </div>
+                  <input type="hidden" id="b-idopont">
+                </div>
+                <div style="display:flex;gap:.75rem;margin-top:.5rem;">
+                  <button type="button" class="btn btn-outline" style="flex:1;" onclick="goStep(1)">← Vissza</button>
+                  <button type="button" class="btn btn-primary" style="flex:2;" onclick="goStep(3)">Tovább →</button>
+                </div>
+              </div>
+
+              <!-- 3. lépés -->
+              <div class="booking-step" id="step-3" style="display:none;">
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label">Neved *</label>
+                    <input type="text" class="form-input" id="b-nev" placeholder="Kovács János" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Telefonszám *</label>
+                    <input type="tel" class="form-input" id="b-tel" placeholder="+36 30 123 4567" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Email cím</label>
+                  <input type="email" class="form-input" id="b-email" placeholder="pelda@email.hu">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Megjegyzés</label>
+                  <textarea class="form-input" id="b-megj" rows="3" placeholder="Kerékpár márkája, típusa, egyéb megjegyzés..."></textarea>
+                </div>
+                <div style="display:flex;gap:.75rem;margin-top:.5rem;">
+                  <button type="button" class="btn btn-outline" style="flex:1;" onclick="goStep(2)">← Vissza</button>
+                  <button type="submit" class="btn btn-primary" style="flex:2;">📅 Foglalás küldése</button>
+                </div>
+              </div>
+
+            </form>
+
+            <!-- VISSZAIGAZOLÁS -->
+            <div class="booking-success" id="booking-success">
+              <div class="booking-success-ico">✅</div>
+              <h3>Foglalás elküldve!</h3>
+              <p>Hamarosan visszaigazoljuk az időpontot telefonon vagy emailben.</p>
+              <a href="../index.html" class="btn btn-primary" style="margin-top:1rem;">← Vissza a főoldalra</a>
+            </div>
+          </div>
+
+          <!-- INFÓ PANEL -->
+          <div class="booking-info fade-in delay-2">
+            <div class="info-card">
+              <div class="info-card-ico">📍</div>
+              <div class="info-card-title">Cím</div>
+              <div class="info-card-val">5700 Gyula, Nagyváradi út 23.</div>
+            </div>
+            <div class="info-card">
+              <div class="info-card-ico">📞</div>
+              <div class="info-card-title">Telefonszám</div>
+              <div class="info-card-val">
+                <a href="tel:+3666611379">+36 66/611-379</a><br>
+                <a href="tel:+36305484260">+36 30/5484-260</a>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="info-card-ico">🕐</div>
+              <div class="info-card-title">Nyitvatartás</div>
+              <div class="info-card-val">
+                H–P: 8:00 – 17:00<br>
+                Szo: 8:00 – 12:00<br>
+                <span style="color:var(--ink-dim);">Vasárnap: Zárva</span>
+              </div>
+            </div>
+            <div class="info-card info-card-blue">
+              <div class="info-card-ico">💡</div>
+              <div class="info-card-title">Tudnivalók</div>
+              <div class="info-card-val">A foglalást telefonon vagy emailben visszaigazoljuk. Sürgős esetben hívj minket közvetlenül!</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div><div class="footer-logo">Gyula<span>Bringa</span></div><div class="footer-logo-sub">Shimano Service Center</div><p class="footer-desc">Officíális Shimano Service Center és Bosch E-bike szervizpartner Gyulán.</p></div>
+      <div><div class="footer-title">Elérhetőség</div>
+        <div class="footer-contact-item"><span class="footer-contact-ico">📍</span><span>5700 Gyula, Nagyváradi út 23.</span></div>
+        <div class="footer-contact-item"><span class="footer-contact-ico">📞</span><div><a href="tel:+3666611379">+36 66/611-379</a><br><a href="tel:+36305484260">+36 30/5484-260</a></div></div>
+        <div class="footer-contact-item"><span class="footer-contact-ico">✉️</span><a href="mailto:gyulabringa@gmail.com">gyulabringa@gmail.com</a></div>
+      </div>
+      <div><div class="footer-title">Nyitvatartás</div>
+        <ul class="footer-list"><li>Hétfő – Péntek: 8:00 – 17:00</li><li>Szombat: 8:00 – 12:00</li><li style="color:rgba(255,255,255,.4);">Vasárnap: Zárva</li></ul>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom"><span>© 2026 GyulaBringa</span><div class="footer-bottom-links"><a href="impresszum.html">Impresszum</a><a href="adatkezeles.html">Adatkezelés</a><a href="aszf.html">ÁSZF</a></div></div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // Min. dátum ma
+    document.getElementById('b-datum').min = new Date().toISOString().split('T')[0];
+
+    // Időpont slot kiválasztás
+    document.getElementById('time-slots').addEventListener('click', e => {
+      if (!e.target.classList.contains('slot')) return;
+      document.querySelectorAll('.slot').forEach(s => s.classList.remove('active'));
+      e.target.classList.add('active');
+      document.getElementById('b-idopont').value = e.target.dataset.time;
+    });
+
+    // Lépések
+    function goStep(n) {
+      if (n === 2) {
+        if (!document.getElementById('b-szolg').value) { alert('Kérjük válassz szolgáltatást!'); return; }
+      }
+      if (n === 3) {
+        if (!document.getElementById('b-datum').value) { alert('Kérjük válassz dátumot!'); return; }
+        if (!document.getElementById('b-idopont').value) { alert('Kérjük válassz időpontot!'); return; }
+      }
+      [1,2,3].forEach(i => {
+        document.getElementById(`step-${i}`).style.display = i === n ? 'block' : 'none';
+        const ind = document.getElementById(`step-${i}-ind`);
+        ind.classList.toggle('active', i <= n);
+        ind.classList.toggle('done', i < n);
+      });
+    }
+
+    // Beküldés
+    document.getElementById('booking-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const nev   = document.getElementById('b-nev').value.trim();
+      const tel   = document.getElementById('b-tel').value.trim();
+      const szolg = document.getElementById('b-szolg').value;
+      const datum = document.getElementById('b-datum').value;
+      const ido   = document.getElementById('b-idopont').value;
+      const email = document.getElementById('b-email').value;
+      const megj  = document.getElementById('b-megj').value;
+
+      if (!nev || !tel) { alert('Kérjük add meg a nevedet és telefonszámodat!'); return; }
+
+      const sub  = encodeURIComponent(`Időpontfoglalás – ${szolg}`);
+      const body = encodeURIComponent(
+        `ÚJ IDŐPONTFOGLALÁS\n\nNév: ${nev}\nTelefon: ${tel}\nEmail: ${email}\n\n` +
+        `Szolgáltatás: ${szolg}\nDátum: ${datum}\nIdőpont: ${ido}\n\nMegjegyzés:\n${megj}`
+      );
+      window.location.href = `mailto:gyulabringa@gmail.com?subject=${sub}&body=${body}`;
+
+      document.getElementById('booking-form').style.display = 'none';
+      document.getElementById('booking-success').style.display = 'block';
+    });
+  </script>
+</body>
+</html>

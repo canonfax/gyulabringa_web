@@ -3,18 +3,17 @@
    Shimano Service Center – fehér/kék, professzionális
    ═══════════════════════════════════════════ */
 
-/* /* ═══════════════════════════════════════════
-   GyulaBringa · style.css
-   Shimano Service Center – fehér/kék, professzionális
-   ═══════════════════════════════════════════ */
+/* Google Fonts – Nunito Sans (csak Ő ő Ű ű karakterekhez) */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap');
 
-/* Frutiger – Shimano hivatalos betűtípus */
+/* Frutiger – Shimano hivatalos betűtípus (latin karakterek) */
 @font-face {
   font-family: 'Frutiger';
   src: url('../fonts/Frutiger.ttf') format('truetype');
   font-weight: 300 400;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0000-014F, U+0152-016F, U+0172-FFFF;
 }
 @font-face {
   font-family: 'Frutiger';
@@ -22,6 +21,28 @@
   font-weight: 600 700 800 900;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0000-014F, U+0152-016F, U+0172-FFFF;
+}
+
+/* Nunito Sans – csak a hiányzó kettős ékezetes karakterekhez */
+/* Ő = U+0150, ő = U+0151, Ű = U+0170, ű = U+0171 */
+@font-face {
+  font-family: 'Frutiger';
+  src: local('Nunito Sans Light'), local('NunitoSans-Light'),
+       url('https://fonts.gstatic.com/s/nunitosans/v15/pe0TMImSLYBIv1o4X1M8cc8WAc5jU1ECVZl_86Y.woff2') format('woff2');
+  font-weight: 300 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0150-0151, U+0170-0171;
+}
+@font-face {
+  font-family: 'Frutiger';
+  src: local('Nunito Sans Bold'), local('NunitoSans-Bold'),
+       url('https://fonts.gstatic.com/s/nunitosans/v15/pe0TMImSLYBIv1o4X1M8cc8WAc5jU1ECVZl_86Y.woff2') format('woff2');
+  font-weight: 600 700 800 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0150-0151, U+0170-0171;
 }
 
 :root {
